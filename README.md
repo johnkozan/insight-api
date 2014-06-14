@@ -95,6 +95,8 @@ Make sure that bitcoind is configured to [accept incoming connections using 'rpc
 In case the network is changed (testnet to livenet or vice versa) levelDB database needs to be deleted. This can be performed running:
 ```util/sync.js -D``` and waiting for *insight* to synchronize again.  Once the database is deleted, the sync.js process can be safely interrupted (CTRL+C) and continued from the synchronization process embedded in main app.
 
+INSIGHT_NETWORK may be set to any network contained in the bitcore networks.js file.  bitcore config/config.js must also be set to the corresponding network.
+
 ## Synchronization
 
 The initial synchronization process scans the blockchain from the paired bitcoind server to update addresses and balances. *insight* needs one (and only one) trusted bitcoind node to run. This node must have finished downloading the blockchain before running *insight*.

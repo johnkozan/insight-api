@@ -18,6 +18,7 @@ function getUserHome() {
 }
 
 var home = process.env.INSIGHT_DB || ( getUserHome()  + '/.insight' );
+var network = process.env.INSIGHT_NETWORK || 'testnet';
 
 if (process.env.INSIGHT_NETWORK === 'livenet') {
   env = 'livenet';
@@ -27,8 +28,8 @@ if (process.env.INSIGHT_NETWORK === 'livenet') {
   p2p_port = '8333';
 }
 else {
-  env = 'testnet';
-  db = home + '/testnet';
+  env = network;
+  db = home + '/' + network;
   port = '3001';
   b_port = '18332';
   p2p_port = '18333';
@@ -47,7 +48,6 @@ switch(process.env.NODE_ENV) {
     break;
 }
 
-var network = process.env.INSIGHT_NETWORK || 'testnet';
 
 var dataDir = process.env.BITCOIND_DATADIR;
 var isWin = /^win/.test(process.platform);
